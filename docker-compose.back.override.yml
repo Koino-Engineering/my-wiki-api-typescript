@@ -1,7 +1,6 @@
 version: "3"
-volumes:
-    dbdata:
 services:
   back:
+    build: ./modules/back/
     volumes:
       - ./modules/back/:/src
