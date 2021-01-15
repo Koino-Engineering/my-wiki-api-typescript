@@ -313,6 +313,1415 @@ export interface User {
     groups?: Array<string>;
 }
 /**
+ * ApiApi - fetch parameter creator
+ * @export
+ */
+export const ApiApiFetchParamCreator = function (configuration?: Configuration) {
+    return {
+        /**
+         * API endpoint that allows users to be viewed or edited.
+         * @param {Article} body 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        apiArticlesCreate(body: Article, options: any = {}): FetchArgs {
+            // verify required parameter 'body' is not null or undefined
+            if (body === null || body === undefined) {
+                throw new RequiredError('body','Required parameter body was null or undefined when calling apiArticlesCreate.');
+            }
+            const localVarPath = `/api/articles/`;
+            const localVarUrlObj = url.parse(localVarPath, true);
+            const localVarRequestOptions = Object.assign({ method: 'POST' }, options);
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication Basic required
+            // http basic authentication required
+            if (configuration && (configuration.username || configuration.password)) {
+                localVarHeaderParameter["Authorization"] = "Basic " + btoa(configuration.username + ":" + configuration.password);
+            }
+
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
+            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
+            delete localVarUrlObj.search;
+            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+            const needsSerialization = (<any>"Article" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
+            localVarRequestOptions.body =  needsSerialization ? JSON.stringify(body || {}) : (body || "");
+
+            return {
+                url: url.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * API endpoint that allows users to be viewed or edited.
+         * @param {number} id A unique integer value identifying this article.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        apiArticlesDelete(id: number, options: any = {}): FetchArgs {
+            // verify required parameter 'id' is not null or undefined
+            if (id === null || id === undefined) {
+                throw new RequiredError('id','Required parameter id was null or undefined when calling apiArticlesDelete.');
+            }
+            const localVarPath = `/api/articles/{id}/`
+                .replace(`{${"id"}}`, encodeURIComponent(String(id)));
+            const localVarUrlObj = url.parse(localVarPath, true);
+            const localVarRequestOptions = Object.assign({ method: 'DELETE' }, options);
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication Basic required
+            // http basic authentication required
+            if (configuration && (configuration.username || configuration.password)) {
+                localVarHeaderParameter["Authorization"] = "Basic " + btoa(configuration.username + ":" + configuration.password);
+            }
+
+            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
+            delete localVarUrlObj.search;
+            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+
+            return {
+                url: url.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * API endpoint that allows users to be viewed or edited.
+         * @param {number} [page] A page number within the paginated result set.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        apiArticlesList(page?: number, options: any = {}): FetchArgs {
+            const localVarPath = `/api/articles/`;
+            const localVarUrlObj = url.parse(localVarPath, true);
+            const localVarRequestOptions = Object.assign({ method: 'GET' }, options);
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication Basic required
+            // http basic authentication required
+            if (configuration && (configuration.username || configuration.password)) {
+                localVarHeaderParameter["Authorization"] = "Basic " + btoa(configuration.username + ":" + configuration.password);
+            }
+
+            if (page !== undefined) {
+                localVarQueryParameter['page'] = page;
+            }
+
+            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
+            delete localVarUrlObj.search;
+            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+
+            return {
+                url: url.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * API endpoint that allows users to be viewed or edited.
+         * @param {Article} body 
+         * @param {number} id A unique integer value identifying this article.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        apiArticlesPartialUpdate(body: Article, id: number, options: any = {}): FetchArgs {
+            // verify required parameter 'body' is not null or undefined
+            if (body === null || body === undefined) {
+                throw new RequiredError('body','Required parameter body was null or undefined when calling apiArticlesPartialUpdate.');
+            }
+            // verify required parameter 'id' is not null or undefined
+            if (id === null || id === undefined) {
+                throw new RequiredError('id','Required parameter id was null or undefined when calling apiArticlesPartialUpdate.');
+            }
+            const localVarPath = `/api/articles/{id}/`
+                .replace(`{${"id"}}`, encodeURIComponent(String(id)));
+            const localVarUrlObj = url.parse(localVarPath, true);
+            const localVarRequestOptions = Object.assign({ method: 'PATCH' }, options);
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication Basic required
+            // http basic authentication required
+            if (configuration && (configuration.username || configuration.password)) {
+                localVarHeaderParameter["Authorization"] = "Basic " + btoa(configuration.username + ":" + configuration.password);
+            }
+
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
+            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
+            delete localVarUrlObj.search;
+            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+            const needsSerialization = (<any>"Article" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
+            localVarRequestOptions.body =  needsSerialization ? JSON.stringify(body || {}) : (body || "");
+
+            return {
+                url: url.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * API endpoint that allows users to be viewed or edited.
+         * @param {number} id A unique integer value identifying this article.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        apiArticlesRead(id: number, options: any = {}): FetchArgs {
+            // verify required parameter 'id' is not null or undefined
+            if (id === null || id === undefined) {
+                throw new RequiredError('id','Required parameter id was null or undefined when calling apiArticlesRead.');
+            }
+            const localVarPath = `/api/articles/{id}/`
+                .replace(`{${"id"}}`, encodeURIComponent(String(id)));
+            const localVarUrlObj = url.parse(localVarPath, true);
+            const localVarRequestOptions = Object.assign({ method: 'GET' }, options);
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication Basic required
+            // http basic authentication required
+            if (configuration && (configuration.username || configuration.password)) {
+                localVarHeaderParameter["Authorization"] = "Basic " + btoa(configuration.username + ":" + configuration.password);
+            }
+
+            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
+            delete localVarUrlObj.search;
+            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+
+            return {
+                url: url.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * API endpoint that allows users to be viewed or edited.
+         * @param {Article} body 
+         * @param {number} id A unique integer value identifying this article.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        apiArticlesUpdate(body: Article, id: number, options: any = {}): FetchArgs {
+            // verify required parameter 'body' is not null or undefined
+            if (body === null || body === undefined) {
+                throw new RequiredError('body','Required parameter body was null or undefined when calling apiArticlesUpdate.');
+            }
+            // verify required parameter 'id' is not null or undefined
+            if (id === null || id === undefined) {
+                throw new RequiredError('id','Required parameter id was null or undefined when calling apiArticlesUpdate.');
+            }
+            const localVarPath = `/api/articles/{id}/`
+                .replace(`{${"id"}}`, encodeURIComponent(String(id)));
+            const localVarUrlObj = url.parse(localVarPath, true);
+            const localVarRequestOptions = Object.assign({ method: 'PUT' }, options);
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication Basic required
+            // http basic authentication required
+            if (configuration && (configuration.username || configuration.password)) {
+                localVarHeaderParameter["Authorization"] = "Basic " + btoa(configuration.username + ":" + configuration.password);
+            }
+
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
+            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
+            delete localVarUrlObj.search;
+            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+            const needsSerialization = (<any>"Article" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
+            localVarRequestOptions.body =  needsSerialization ? JSON.stringify(body || {}) : (body || "");
+
+            return {
+                url: url.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * API endpoint that allows groups to be viewed or edited.
+         * @param {Group} body 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        apiGroupsCreate(body: Group, options: any = {}): FetchArgs {
+            // verify required parameter 'body' is not null or undefined
+            if (body === null || body === undefined) {
+                throw new RequiredError('body','Required parameter body was null or undefined when calling apiGroupsCreate.');
+            }
+            const localVarPath = `/api/groups/`;
+            const localVarUrlObj = url.parse(localVarPath, true);
+            const localVarRequestOptions = Object.assign({ method: 'POST' }, options);
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication Basic required
+            // http basic authentication required
+            if (configuration && (configuration.username || configuration.password)) {
+                localVarHeaderParameter["Authorization"] = "Basic " + btoa(configuration.username + ":" + configuration.password);
+            }
+
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
+            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
+            delete localVarUrlObj.search;
+            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+            const needsSerialization = (<any>"Group" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
+            localVarRequestOptions.body =  needsSerialization ? JSON.stringify(body || {}) : (body || "");
+
+            return {
+                url: url.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * API endpoint that allows groups to be viewed or edited.
+         * @param {number} id A unique integer value identifying this group.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        apiGroupsDelete(id: number, options: any = {}): FetchArgs {
+            // verify required parameter 'id' is not null or undefined
+            if (id === null || id === undefined) {
+                throw new RequiredError('id','Required parameter id was null or undefined when calling apiGroupsDelete.');
+            }
+            const localVarPath = `/api/groups/{id}/`
+                .replace(`{${"id"}}`, encodeURIComponent(String(id)));
+            const localVarUrlObj = url.parse(localVarPath, true);
+            const localVarRequestOptions = Object.assign({ method: 'DELETE' }, options);
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication Basic required
+            // http basic authentication required
+            if (configuration && (configuration.username || configuration.password)) {
+                localVarHeaderParameter["Authorization"] = "Basic " + btoa(configuration.username + ":" + configuration.password);
+            }
+
+            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
+            delete localVarUrlObj.search;
+            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+
+            return {
+                url: url.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * API endpoint that allows groups to be viewed or edited.
+         * @param {number} [page] A page number within the paginated result set.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        apiGroupsList(page?: number, options: any = {}): FetchArgs {
+            const localVarPath = `/api/groups/`;
+            const localVarUrlObj = url.parse(localVarPath, true);
+            const localVarRequestOptions = Object.assign({ method: 'GET' }, options);
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication Basic required
+            // http basic authentication required
+            if (configuration && (configuration.username || configuration.password)) {
+                localVarHeaderParameter["Authorization"] = "Basic " + btoa(configuration.username + ":" + configuration.password);
+            }
+
+            if (page !== undefined) {
+                localVarQueryParameter['page'] = page;
+            }
+
+            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
+            delete localVarUrlObj.search;
+            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+
+            return {
+                url: url.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * API endpoint that allows groups to be viewed or edited.
+         * @param {Group} body 
+         * @param {number} id A unique integer value identifying this group.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        apiGroupsPartialUpdate(body: Group, id: number, options: any = {}): FetchArgs {
+            // verify required parameter 'body' is not null or undefined
+            if (body === null || body === undefined) {
+                throw new RequiredError('body','Required parameter body was null or undefined when calling apiGroupsPartialUpdate.');
+            }
+            // verify required parameter 'id' is not null or undefined
+            if (id === null || id === undefined) {
+                throw new RequiredError('id','Required parameter id was null or undefined when calling apiGroupsPartialUpdate.');
+            }
+            const localVarPath = `/api/groups/{id}/`
+                .replace(`{${"id"}}`, encodeURIComponent(String(id)));
+            const localVarUrlObj = url.parse(localVarPath, true);
+            const localVarRequestOptions = Object.assign({ method: 'PATCH' }, options);
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication Basic required
+            // http basic authentication required
+            if (configuration && (configuration.username || configuration.password)) {
+                localVarHeaderParameter["Authorization"] = "Basic " + btoa(configuration.username + ":" + configuration.password);
+            }
+
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
+            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
+            delete localVarUrlObj.search;
+            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+            const needsSerialization = (<any>"Group" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
+            localVarRequestOptions.body =  needsSerialization ? JSON.stringify(body || {}) : (body || "");
+
+            return {
+                url: url.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * API endpoint that allows groups to be viewed or edited.
+         * @param {number} id A unique integer value identifying this group.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        apiGroupsRead(id: number, options: any = {}): FetchArgs {
+            // verify required parameter 'id' is not null or undefined
+            if (id === null || id === undefined) {
+                throw new RequiredError('id','Required parameter id was null or undefined when calling apiGroupsRead.');
+            }
+            const localVarPath = `/api/groups/{id}/`
+                .replace(`{${"id"}}`, encodeURIComponent(String(id)));
+            const localVarUrlObj = url.parse(localVarPath, true);
+            const localVarRequestOptions = Object.assign({ method: 'GET' }, options);
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication Basic required
+            // http basic authentication required
+            if (configuration && (configuration.username || configuration.password)) {
+                localVarHeaderParameter["Authorization"] = "Basic " + btoa(configuration.username + ":" + configuration.password);
+            }
+
+            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
+            delete localVarUrlObj.search;
+            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+
+            return {
+                url: url.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * API endpoint that allows groups to be viewed or edited.
+         * @param {Group} body 
+         * @param {number} id A unique integer value identifying this group.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        apiGroupsUpdate(body: Group, id: number, options: any = {}): FetchArgs {
+            // verify required parameter 'body' is not null or undefined
+            if (body === null || body === undefined) {
+                throw new RequiredError('body','Required parameter body was null or undefined when calling apiGroupsUpdate.');
+            }
+            // verify required parameter 'id' is not null or undefined
+            if (id === null || id === undefined) {
+                throw new RequiredError('id','Required parameter id was null or undefined when calling apiGroupsUpdate.');
+            }
+            const localVarPath = `/api/groups/{id}/`
+                .replace(`{${"id"}}`, encodeURIComponent(String(id)));
+            const localVarUrlObj = url.parse(localVarPath, true);
+            const localVarRequestOptions = Object.assign({ method: 'PUT' }, options);
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication Basic required
+            // http basic authentication required
+            if (configuration && (configuration.username || configuration.password)) {
+                localVarHeaderParameter["Authorization"] = "Basic " + btoa(configuration.username + ":" + configuration.password);
+            }
+
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
+            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
+            delete localVarUrlObj.search;
+            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+            const needsSerialization = (<any>"Group" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
+            localVarRequestOptions.body =  needsSerialization ? JSON.stringify(body || {}) : (body || "");
+
+            return {
+                url: url.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * API endpoint that allows users to be viewed or edited.
+         * @param {User} body 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        apiUsersCreate(body: User, options: any = {}): FetchArgs {
+            // verify required parameter 'body' is not null or undefined
+            if (body === null || body === undefined) {
+                throw new RequiredError('body','Required parameter body was null or undefined when calling apiUsersCreate.');
+            }
+            const localVarPath = `/api/users/`;
+            const localVarUrlObj = url.parse(localVarPath, true);
+            const localVarRequestOptions = Object.assign({ method: 'POST' }, options);
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication Basic required
+            // http basic authentication required
+            if (configuration && (configuration.username || configuration.password)) {
+                localVarHeaderParameter["Authorization"] = "Basic " + btoa(configuration.username + ":" + configuration.password);
+            }
+
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
+            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
+            delete localVarUrlObj.search;
+            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+            const needsSerialization = (<any>"User" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
+            localVarRequestOptions.body =  needsSerialization ? JSON.stringify(body || {}) : (body || "");
+
+            return {
+                url: url.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * API endpoint that allows users to be viewed or edited.
+         * @param {number} id A unique integer value identifying this user.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        apiUsersDelete(id: number, options: any = {}): FetchArgs {
+            // verify required parameter 'id' is not null or undefined
+            if (id === null || id === undefined) {
+                throw new RequiredError('id','Required parameter id was null or undefined when calling apiUsersDelete.');
+            }
+            const localVarPath = `/api/users/{id}/`
+                .replace(`{${"id"}}`, encodeURIComponent(String(id)));
+            const localVarUrlObj = url.parse(localVarPath, true);
+            const localVarRequestOptions = Object.assign({ method: 'DELETE' }, options);
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication Basic required
+            // http basic authentication required
+            if (configuration && (configuration.username || configuration.password)) {
+                localVarHeaderParameter["Authorization"] = "Basic " + btoa(configuration.username + ":" + configuration.password);
+            }
+
+            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
+            delete localVarUrlObj.search;
+            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+
+            return {
+                url: url.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * API endpoint that allows users to be viewed or edited.
+         * @param {number} [page] A page number within the paginated result set.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        apiUsersList(page?: number, options: any = {}): FetchArgs {
+            const localVarPath = `/api/users/`;
+            const localVarUrlObj = url.parse(localVarPath, true);
+            const localVarRequestOptions = Object.assign({ method: 'GET' }, options);
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication Basic required
+            // http basic authentication required
+            if (configuration && (configuration.username || configuration.password)) {
+                localVarHeaderParameter["Authorization"] = "Basic " + btoa(configuration.username + ":" + configuration.password);
+            }
+
+            if (page !== undefined) {
+                localVarQueryParameter['page'] = page;
+            }
+
+            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
+            delete localVarUrlObj.search;
+            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+
+            return {
+                url: url.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * API endpoint that allows users to be viewed or edited.
+         * @param {User} body 
+         * @param {number} id A unique integer value identifying this user.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        apiUsersPartialUpdate(body: User, id: number, options: any = {}): FetchArgs {
+            // verify required parameter 'body' is not null or undefined
+            if (body === null || body === undefined) {
+                throw new RequiredError('body','Required parameter body was null or undefined when calling apiUsersPartialUpdate.');
+            }
+            // verify required parameter 'id' is not null or undefined
+            if (id === null || id === undefined) {
+                throw new RequiredError('id','Required parameter id was null or undefined when calling apiUsersPartialUpdate.');
+            }
+            const localVarPath = `/api/users/{id}/`
+                .replace(`{${"id"}}`, encodeURIComponent(String(id)));
+            const localVarUrlObj = url.parse(localVarPath, true);
+            const localVarRequestOptions = Object.assign({ method: 'PATCH' }, options);
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication Basic required
+            // http basic authentication required
+            if (configuration && (configuration.username || configuration.password)) {
+                localVarHeaderParameter["Authorization"] = "Basic " + btoa(configuration.username + ":" + configuration.password);
+            }
+
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
+            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
+            delete localVarUrlObj.search;
+            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+            const needsSerialization = (<any>"User" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
+            localVarRequestOptions.body =  needsSerialization ? JSON.stringify(body || {}) : (body || "");
+
+            return {
+                url: url.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * API endpoint that allows users to be viewed or edited.
+         * @param {number} id A unique integer value identifying this user.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        apiUsersRead(id: number, options: any = {}): FetchArgs {
+            // verify required parameter 'id' is not null or undefined
+            if (id === null || id === undefined) {
+                throw new RequiredError('id','Required parameter id was null or undefined when calling apiUsersRead.');
+            }
+            const localVarPath = `/api/users/{id}/`
+                .replace(`{${"id"}}`, encodeURIComponent(String(id)));
+            const localVarUrlObj = url.parse(localVarPath, true);
+            const localVarRequestOptions = Object.assign({ method: 'GET' }, options);
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication Basic required
+            // http basic authentication required
+            if (configuration && (configuration.username || configuration.password)) {
+                localVarHeaderParameter["Authorization"] = "Basic " + btoa(configuration.username + ":" + configuration.password);
+            }
+
+            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
+            delete localVarUrlObj.search;
+            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+
+            return {
+                url: url.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * API endpoint that allows users to be viewed or edited.
+         * @param {User} body 
+         * @param {number} id A unique integer value identifying this user.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        apiUsersUpdate(body: User, id: number, options: any = {}): FetchArgs {
+            // verify required parameter 'body' is not null or undefined
+            if (body === null || body === undefined) {
+                throw new RequiredError('body','Required parameter body was null or undefined when calling apiUsersUpdate.');
+            }
+            // verify required parameter 'id' is not null or undefined
+            if (id === null || id === undefined) {
+                throw new RequiredError('id','Required parameter id was null or undefined when calling apiUsersUpdate.');
+            }
+            const localVarPath = `/api/users/{id}/`
+                .replace(`{${"id"}}`, encodeURIComponent(String(id)));
+            const localVarUrlObj = url.parse(localVarPath, true);
+            const localVarRequestOptions = Object.assign({ method: 'PUT' }, options);
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication Basic required
+            // http basic authentication required
+            if (configuration && (configuration.username || configuration.password)) {
+                localVarHeaderParameter["Authorization"] = "Basic " + btoa(configuration.username + ":" + configuration.password);
+            }
+
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
+            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
+            delete localVarUrlObj.search;
+            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+            const needsSerialization = (<any>"User" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
+            localVarRequestOptions.body =  needsSerialization ? JSON.stringify(body || {}) : (body || "");
+
+            return {
+                url: url.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+    }
+};
+
+/**
+ * ApiApi - functional programming interface
+ * @export
+ */
+export const ApiApiFp = function(configuration?: Configuration) {
+    return {
+        /**
+         * API endpoint that allows users to be viewed or edited.
+         * @param {Article} body 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        apiArticlesCreate(body: Article, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<Article> {
+            const localVarFetchArgs = ApiApiFetchParamCreator(configuration).apiArticlesCreate(body, options);
+            return (fetch: FetchAPI = portableFetch, basePath: string = BASE_PATH) => {
+                return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
+                    if (response.status >= 200 && response.status < 300) {
+                        return response.json();
+                    } else {
+                        throw response;
+                    }
+                });
+            };
+        },
+        /**
+         * API endpoint that allows users to be viewed or edited.
+         * @param {number} id A unique integer value identifying this article.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        apiArticlesDelete(id: number, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<Response> {
+            const localVarFetchArgs = ApiApiFetchParamCreator(configuration).apiArticlesDelete(id, options);
+            return (fetch: FetchAPI = portableFetch, basePath: string = BASE_PATH) => {
+                return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
+                    if (response.status >= 200 && response.status < 300) {
+                        return response;
+                    } else {
+                        throw response;
+                    }
+                });
+            };
+        },
+        /**
+         * API endpoint that allows users to be viewed or edited.
+         * @param {number} [page] A page number within the paginated result set.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        apiArticlesList(page?: number, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<InlineResponse200> {
+            const localVarFetchArgs = ApiApiFetchParamCreator(configuration).apiArticlesList(page, options);
+            return (fetch: FetchAPI = portableFetch, basePath: string = BASE_PATH) => {
+                return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
+                    if (response.status >= 200 && response.status < 300) {
+                        return response.json();
+                    } else {
+                        throw response;
+                    }
+                });
+            };
+        },
+        /**
+         * API endpoint that allows users to be viewed or edited.
+         * @param {Article} body 
+         * @param {number} id A unique integer value identifying this article.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        apiArticlesPartialUpdate(body: Article, id: number, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<Article> {
+            const localVarFetchArgs = ApiApiFetchParamCreator(configuration).apiArticlesPartialUpdate(body, id, options);
+            return (fetch: FetchAPI = portableFetch, basePath: string = BASE_PATH) => {
+                return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
+                    if (response.status >= 200 && response.status < 300) {
+                        return response.json();
+                    } else {
+                        throw response;
+                    }
+                });
+            };
+        },
+        /**
+         * API endpoint that allows users to be viewed or edited.
+         * @param {number} id A unique integer value identifying this article.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        apiArticlesRead(id: number, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<Article> {
+            const localVarFetchArgs = ApiApiFetchParamCreator(configuration).apiArticlesRead(id, options);
+            return (fetch: FetchAPI = portableFetch, basePath: string = BASE_PATH) => {
+                return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
+                    if (response.status >= 200 && response.status < 300) {
+                        return response.json();
+                    } else {
+                        throw response;
+                    }
+                });
+            };
+        },
+        /**
+         * API endpoint that allows users to be viewed or edited.
+         * @param {Article} body 
+         * @param {number} id A unique integer value identifying this article.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        apiArticlesUpdate(body: Article, id: number, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<Article> {
+            const localVarFetchArgs = ApiApiFetchParamCreator(configuration).apiArticlesUpdate(body, id, options);
+            return (fetch: FetchAPI = portableFetch, basePath: string = BASE_PATH) => {
+                return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
+                    if (response.status >= 200 && response.status < 300) {
+                        return response.json();
+                    } else {
+                        throw response;
+                    }
+                });
+            };
+        },
+        /**
+         * API endpoint that allows groups to be viewed or edited.
+         * @param {Group} body 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        apiGroupsCreate(body: Group, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<Group> {
+            const localVarFetchArgs = ApiApiFetchParamCreator(configuration).apiGroupsCreate(body, options);
+            return (fetch: FetchAPI = portableFetch, basePath: string = BASE_PATH) => {
+                return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
+                    if (response.status >= 200 && response.status < 300) {
+                        return response.json();
+                    } else {
+                        throw response;
+                    }
+                });
+            };
+        },
+        /**
+         * API endpoint that allows groups to be viewed or edited.
+         * @param {number} id A unique integer value identifying this group.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        apiGroupsDelete(id: number, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<Response> {
+            const localVarFetchArgs = ApiApiFetchParamCreator(configuration).apiGroupsDelete(id, options);
+            return (fetch: FetchAPI = portableFetch, basePath: string = BASE_PATH) => {
+                return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
+                    if (response.status >= 200 && response.status < 300) {
+                        return response;
+                    } else {
+                        throw response;
+                    }
+                });
+            };
+        },
+        /**
+         * API endpoint that allows groups to be viewed or edited.
+         * @param {number} [page] A page number within the paginated result set.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        apiGroupsList(page?: number, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<InlineResponse2001> {
+            const localVarFetchArgs = ApiApiFetchParamCreator(configuration).apiGroupsList(page, options);
+            return (fetch: FetchAPI = portableFetch, basePath: string = BASE_PATH) => {
+                return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
+                    if (response.status >= 200 && response.status < 300) {
+                        return response.json();
+                    } else {
+                        throw response;
+                    }
+                });
+            };
+        },
+        /**
+         * API endpoint that allows groups to be viewed or edited.
+         * @param {Group} body 
+         * @param {number} id A unique integer value identifying this group.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        apiGroupsPartialUpdate(body: Group, id: number, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<Group> {
+            const localVarFetchArgs = ApiApiFetchParamCreator(configuration).apiGroupsPartialUpdate(body, id, options);
+            return (fetch: FetchAPI = portableFetch, basePath: string = BASE_PATH) => {
+                return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
+                    if (response.status >= 200 && response.status < 300) {
+                        return response.json();
+                    } else {
+                        throw response;
+                    }
+                });
+            };
+        },
+        /**
+         * API endpoint that allows groups to be viewed or edited.
+         * @param {number} id A unique integer value identifying this group.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        apiGroupsRead(id: number, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<Group> {
+            const localVarFetchArgs = ApiApiFetchParamCreator(configuration).apiGroupsRead(id, options);
+            return (fetch: FetchAPI = portableFetch, basePath: string = BASE_PATH) => {
+                return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
+                    if (response.status >= 200 && response.status < 300) {
+                        return response.json();
+                    } else {
+                        throw response;
+                    }
+                });
+            };
+        },
+        /**
+         * API endpoint that allows groups to be viewed or edited.
+         * @param {Group} body 
+         * @param {number} id A unique integer value identifying this group.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        apiGroupsUpdate(body: Group, id: number, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<Group> {
+            const localVarFetchArgs = ApiApiFetchParamCreator(configuration).apiGroupsUpdate(body, id, options);
+            return (fetch: FetchAPI = portableFetch, basePath: string = BASE_PATH) => {
+                return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
+                    if (response.status >= 200 && response.status < 300) {
+                        return response.json();
+                    } else {
+                        throw response;
+                    }
+                });
+            };
+        },
+        /**
+         * API endpoint that allows users to be viewed or edited.
+         * @param {User} body 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        apiUsersCreate(body: User, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<User> {
+            const localVarFetchArgs = ApiApiFetchParamCreator(configuration).apiUsersCreate(body, options);
+            return (fetch: FetchAPI = portableFetch, basePath: string = BASE_PATH) => {
+                return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
+                    if (response.status >= 200 && response.status < 300) {
+                        return response.json();
+                    } else {
+                        throw response;
+                    }
+                });
+            };
+        },
+        /**
+         * API endpoint that allows users to be viewed or edited.
+         * @param {number} id A unique integer value identifying this user.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        apiUsersDelete(id: number, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<Response> {
+            const localVarFetchArgs = ApiApiFetchParamCreator(configuration).apiUsersDelete(id, options);
+            return (fetch: FetchAPI = portableFetch, basePath: string = BASE_PATH) => {
+                return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
+                    if (response.status >= 200 && response.status < 300) {
+                        return response;
+                    } else {
+                        throw response;
+                    }
+                });
+            };
+        },
+        /**
+         * API endpoint that allows users to be viewed or edited.
+         * @param {number} [page] A page number within the paginated result set.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        apiUsersList(page?: number, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<InlineResponse2002> {
+            const localVarFetchArgs = ApiApiFetchParamCreator(configuration).apiUsersList(page, options);
+            return (fetch: FetchAPI = portableFetch, basePath: string = BASE_PATH) => {
+                return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
+                    if (response.status >= 200 && response.status < 300) {
+                        return response.json();
+                    } else {
+                        throw response;
+                    }
+                });
+            };
+        },
+        /**
+         * API endpoint that allows users to be viewed or edited.
+         * @param {User} body 
+         * @param {number} id A unique integer value identifying this user.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        apiUsersPartialUpdate(body: User, id: number, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<User> {
+            const localVarFetchArgs = ApiApiFetchParamCreator(configuration).apiUsersPartialUpdate(body, id, options);
+            return (fetch: FetchAPI = portableFetch, basePath: string = BASE_PATH) => {
+                return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
+                    if (response.status >= 200 && response.status < 300) {
+                        return response.json();
+                    } else {
+                        throw response;
+                    }
+                });
+            };
+        },
+        /**
+         * API endpoint that allows users to be viewed or edited.
+         * @param {number} id A unique integer value identifying this user.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        apiUsersRead(id: number, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<User> {
+            const localVarFetchArgs = ApiApiFetchParamCreator(configuration).apiUsersRead(id, options);
+            return (fetch: FetchAPI = portableFetch, basePath: string = BASE_PATH) => {
+                return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
+                    if (response.status >= 200 && response.status < 300) {
+                        return response.json();
+                    } else {
+                        throw response;
+                    }
+                });
+            };
+        },
+        /**
+         * API endpoint that allows users to be viewed or edited.
+         * @param {User} body 
+         * @param {number} id A unique integer value identifying this user.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        apiUsersUpdate(body: User, id: number, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<User> {
+            const localVarFetchArgs = ApiApiFetchParamCreator(configuration).apiUsersUpdate(body, id, options);
+            return (fetch: FetchAPI = portableFetch, basePath: string = BASE_PATH) => {
+                return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
+                    if (response.status >= 200 && response.status < 300) {
+                        return response.json();
+                    } else {
+                        throw response;
+                    }
+                });
+            };
+        },
+    }
+};
+
+/**
+ * ApiApi - factory interface
+ * @export
+ */
+export const ApiApiFactory = function (configuration?: Configuration, fetch?: FetchAPI, basePath?: string) {
+    return {
+        /**
+         * API endpoint that allows users to be viewed or edited.
+         * @param {Article} body 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        apiArticlesCreate(body: Article, options?: any) {
+            return ApiApiFp(configuration).apiArticlesCreate(body, options)(fetch, basePath);
+        },
+        /**
+         * API endpoint that allows users to be viewed or edited.
+         * @param {number} id A unique integer value identifying this article.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        apiArticlesDelete(id: number, options?: any) {
+            return ApiApiFp(configuration).apiArticlesDelete(id, options)(fetch, basePath);
+        },
+        /**
+         * API endpoint that allows users to be viewed or edited.
+         * @param {number} [page] A page number within the paginated result set.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        apiArticlesList(page?: number, options?: any) {
+            return ApiApiFp(configuration).apiArticlesList(page, options)(fetch, basePath);
+        },
+        /**
+         * API endpoint that allows users to be viewed or edited.
+         * @param {Article} body 
+         * @param {number} id A unique integer value identifying this article.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        apiArticlesPartialUpdate(body: Article, id: number, options?: any) {
+            return ApiApiFp(configuration).apiArticlesPartialUpdate(body, id, options)(fetch, basePath);
+        },
+        /**
+         * API endpoint that allows users to be viewed or edited.
+         * @param {number} id A unique integer value identifying this article.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        apiArticlesRead(id: number, options?: any) {
+            return ApiApiFp(configuration).apiArticlesRead(id, options)(fetch, basePath);
+        },
+        /**
+         * API endpoint that allows users to be viewed or edited.
+         * @param {Article} body 
+         * @param {number} id A unique integer value identifying this article.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        apiArticlesUpdate(body: Article, id: number, options?: any) {
+            return ApiApiFp(configuration).apiArticlesUpdate(body, id, options)(fetch, basePath);
+        },
+        /**
+         * API endpoint that allows groups to be viewed or edited.
+         * @param {Group} body 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        apiGroupsCreate(body: Group, options?: any) {
+            return ApiApiFp(configuration).apiGroupsCreate(body, options)(fetch, basePath);
+        },
+        /**
+         * API endpoint that allows groups to be viewed or edited.
+         * @param {number} id A unique integer value identifying this group.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        apiGroupsDelete(id: number, options?: any) {
+            return ApiApiFp(configuration).apiGroupsDelete(id, options)(fetch, basePath);
+        },
+        /**
+         * API endpoint that allows groups to be viewed or edited.
+         * @param {number} [page] A page number within the paginated result set.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        apiGroupsList(page?: number, options?: any) {
+            return ApiApiFp(configuration).apiGroupsList(page, options)(fetch, basePath);
+        },
+        /**
+         * API endpoint that allows groups to be viewed or edited.
+         * @param {Group} body 
+         * @param {number} id A unique integer value identifying this group.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        apiGroupsPartialUpdate(body: Group, id: number, options?: any) {
+            return ApiApiFp(configuration).apiGroupsPartialUpdate(body, id, options)(fetch, basePath);
+        },
+        /**
+         * API endpoint that allows groups to be viewed or edited.
+         * @param {number} id A unique integer value identifying this group.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        apiGroupsRead(id: number, options?: any) {
+            return ApiApiFp(configuration).apiGroupsRead(id, options)(fetch, basePath);
+        },
+        /**
+         * API endpoint that allows groups to be viewed or edited.
+         * @param {Group} body 
+         * @param {number} id A unique integer value identifying this group.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        apiGroupsUpdate(body: Group, id: number, options?: any) {
+            return ApiApiFp(configuration).apiGroupsUpdate(body, id, options)(fetch, basePath);
+        },
+        /**
+         * API endpoint that allows users to be viewed or edited.
+         * @param {User} body 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        apiUsersCreate(body: User, options?: any) {
+            return ApiApiFp(configuration).apiUsersCreate(body, options)(fetch, basePath);
+        },
+        /**
+         * API endpoint that allows users to be viewed or edited.
+         * @param {number} id A unique integer value identifying this user.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        apiUsersDelete(id: number, options?: any) {
+            return ApiApiFp(configuration).apiUsersDelete(id, options)(fetch, basePath);
+        },
+        /**
+         * API endpoint that allows users to be viewed or edited.
+         * @param {number} [page] A page number within the paginated result set.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        apiUsersList(page?: number, options?: any) {
+            return ApiApiFp(configuration).apiUsersList(page, options)(fetch, basePath);
+        },
+        /**
+         * API endpoint that allows users to be viewed or edited.
+         * @param {User} body 
+         * @param {number} id A unique integer value identifying this user.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        apiUsersPartialUpdate(body: User, id: number, options?: any) {
+            return ApiApiFp(configuration).apiUsersPartialUpdate(body, id, options)(fetch, basePath);
+        },
+        /**
+         * API endpoint that allows users to be viewed or edited.
+         * @param {number} id A unique integer value identifying this user.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        apiUsersRead(id: number, options?: any) {
+            return ApiApiFp(configuration).apiUsersRead(id, options)(fetch, basePath);
+        },
+        /**
+         * API endpoint that allows users to be viewed or edited.
+         * @param {User} body 
+         * @param {number} id A unique integer value identifying this user.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        apiUsersUpdate(body: User, id: number, options?: any) {
+            return ApiApiFp(configuration).apiUsersUpdate(body, id, options)(fetch, basePath);
+        },
+    };
+};
+
+/**
+ * ApiApi - object-oriented interface
+ * @export
+ * @class ApiApi
+ * @extends {BaseAPI}
+ */
+export class ApiApi extends BaseAPI {
+    /**
+     * API endpoint that allows users to be viewed or edited.
+     * @param {Article} body 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof ApiApi
+     */
+    public apiArticlesCreate(body: Article, options?: any) {
+        return ApiApiFp(this.configuration).apiArticlesCreate(body, options)(this.fetch, this.basePath);
+    }
+
+    /**
+     * API endpoint that allows users to be viewed or edited.
+     * @param {number} id A unique integer value identifying this article.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof ApiApi
+     */
+    public apiArticlesDelete(id: number, options?: any) {
+        return ApiApiFp(this.configuration).apiArticlesDelete(id, options)(this.fetch, this.basePath);
+    }
+
+    /**
+     * API endpoint that allows users to be viewed or edited.
+     * @param {number} [page] A page number within the paginated result set.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof ApiApi
+     */
+    public apiArticlesList(page?: number, options?: any) {
+        return ApiApiFp(this.configuration).apiArticlesList(page, options)(this.fetch, this.basePath);
+    }
+
+    /**
+     * API endpoint that allows users to be viewed or edited.
+     * @param {Article} body 
+     * @param {number} id A unique integer value identifying this article.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof ApiApi
+     */
+    public apiArticlesPartialUpdate(body: Article, id: number, options?: any) {
+        return ApiApiFp(this.configuration).apiArticlesPartialUpdate(body, id, options)(this.fetch, this.basePath);
+    }
+
+    /**
+     * API endpoint that allows users to be viewed or edited.
+     * @param {number} id A unique integer value identifying this article.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof ApiApi
+     */
+    public apiArticlesRead(id: number, options?: any) {
+        return ApiApiFp(this.configuration).apiArticlesRead(id, options)(this.fetch, this.basePath);
+    }
+
+    /**
+     * API endpoint that allows users to be viewed or edited.
+     * @param {Article} body 
+     * @param {number} id A unique integer value identifying this article.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof ApiApi
+     */
+    public apiArticlesUpdate(body: Article, id: number, options?: any) {
+        return ApiApiFp(this.configuration).apiArticlesUpdate(body, id, options)(this.fetch, this.basePath);
+    }
+
+    /**
+     * API endpoint that allows groups to be viewed or edited.
+     * @param {Group} body 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof ApiApi
+     */
+    public apiGroupsCreate(body: Group, options?: any) {
+        return ApiApiFp(this.configuration).apiGroupsCreate(body, options)(this.fetch, this.basePath);
+    }
+
+    /**
+     * API endpoint that allows groups to be viewed or edited.
+     * @param {number} id A unique integer value identifying this group.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof ApiApi
+     */
+    public apiGroupsDelete(id: number, options?: any) {
+        return ApiApiFp(this.configuration).apiGroupsDelete(id, options)(this.fetch, this.basePath);
+    }
+
+    /**
+     * API endpoint that allows groups to be viewed or edited.
+     * @param {number} [page] A page number within the paginated result set.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof ApiApi
+     */
+    public apiGroupsList(page?: number, options?: any) {
+        return ApiApiFp(this.configuration).apiGroupsList(page, options)(this.fetch, this.basePath);
+    }
+
+    /**
+     * API endpoint that allows groups to be viewed or edited.
+     * @param {Group} body 
+     * @param {number} id A unique integer value identifying this group.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof ApiApi
+     */
+    public apiGroupsPartialUpdate(body: Group, id: number, options?: any) {
+        return ApiApiFp(this.configuration).apiGroupsPartialUpdate(body, id, options)(this.fetch, this.basePath);
+    }
+
+    /**
+     * API endpoint that allows groups to be viewed or edited.
+     * @param {number} id A unique integer value identifying this group.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof ApiApi
+     */
+    public apiGroupsRead(id: number, options?: any) {
+        return ApiApiFp(this.configuration).apiGroupsRead(id, options)(this.fetch, this.basePath);
+    }
+
+    /**
+     * API endpoint that allows groups to be viewed or edited.
+     * @param {Group} body 
+     * @param {number} id A unique integer value identifying this group.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof ApiApi
+     */
+    public apiGroupsUpdate(body: Group, id: number, options?: any) {
+        return ApiApiFp(this.configuration).apiGroupsUpdate(body, id, options)(this.fetch, this.basePath);
+    }
+
+    /**
+     * API endpoint that allows users to be viewed or edited.
+     * @param {User} body 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof ApiApi
+     */
+    public apiUsersCreate(body: User, options?: any) {
+        return ApiApiFp(this.configuration).apiUsersCreate(body, options)(this.fetch, this.basePath);
+    }
+
+    /**
+     * API endpoint that allows users to be viewed or edited.
+     * @param {number} id A unique integer value identifying this user.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof ApiApi
+     */
+    public apiUsersDelete(id: number, options?: any) {
+        return ApiApiFp(this.configuration).apiUsersDelete(id, options)(this.fetch, this.basePath);
+    }
+
+    /**
+     * API endpoint that allows users to be viewed or edited.
+     * @param {number} [page] A page number within the paginated result set.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof ApiApi
+     */
+    public apiUsersList(page?: number, options?: any) {
+        return ApiApiFp(this.configuration).apiUsersList(page, options)(this.fetch, this.basePath);
+    }
+
+    /**
+     * API endpoint that allows users to be viewed or edited.
+     * @param {User} body 
+     * @param {number} id A unique integer value identifying this user.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof ApiApi
+     */
+    public apiUsersPartialUpdate(body: User, id: number, options?: any) {
+        return ApiApiFp(this.configuration).apiUsersPartialUpdate(body, id, options)(this.fetch, this.basePath);
+    }
+
+    /**
+     * API endpoint that allows users to be viewed or edited.
+     * @param {number} id A unique integer value identifying this user.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof ApiApi
+     */
+    public apiUsersRead(id: number, options?: any) {
+        return ApiApiFp(this.configuration).apiUsersRead(id, options)(this.fetch, this.basePath);
+    }
+
+    /**
+     * API endpoint that allows users to be viewed or edited.
+     * @param {User} body 
+     * @param {number} id A unique integer value identifying this user.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof ApiApi
+     */
+    public apiUsersUpdate(body: User, id: number, options?: any) {
+        return ApiApiFp(this.configuration).apiUsersUpdate(body, id, options)(this.fetch, this.basePath);
+    }
+
+}
+/**
  * ApiTokenAuthApi - fetch parameter creator
  * @export
  */
@@ -419,1485 +1828,6 @@ export class ApiTokenAuthApi extends BaseAPI {
      */
     public apiTokenAuthCreate(body: AuthToken, options?: any) {
         return ApiTokenAuthApiFp(this.configuration).apiTokenAuthCreate(body, options)(this.fetch, this.basePath);
-    }
-
-}
-/**
- * ArticlesApi - fetch parameter creator
- * @export
- */
-export const ArticlesApiFetchParamCreator = function (configuration?: Configuration) {
-    return {
-        /**
-         * API endpoint that allows users to be viewed or edited.
-         * @param {Article} body 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        articlesCreate(body: Article, options: any = {}): FetchArgs {
-            // verify required parameter 'body' is not null or undefined
-            if (body === null || body === undefined) {
-                throw new RequiredError('body','Required parameter body was null or undefined when calling articlesCreate.');
-            }
-            const localVarPath = `/articles/`;
-            const localVarUrlObj = url.parse(localVarPath, true);
-            const localVarRequestOptions = Object.assign({ method: 'POST' }, options);
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-            // authentication Basic required
-            // http basic authentication required
-            if (configuration && (configuration.username || configuration.password)) {
-                localVarHeaderParameter["Authorization"] = "Basic " + btoa(configuration.username + ":" + configuration.password);
-            }
-
-            localVarHeaderParameter['Content-Type'] = 'application/json';
-
-            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
-            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
-            delete localVarUrlObj.search;
-            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
-            const needsSerialization = (<any>"Article" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
-            localVarRequestOptions.body =  needsSerialization ? JSON.stringify(body || {}) : (body || "");
-
-            return {
-                url: url.format(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         * API endpoint that allows users to be viewed or edited.
-         * @param {number} id A unique integer value identifying this article.
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        articlesDelete(id: number, options: any = {}): FetchArgs {
-            // verify required parameter 'id' is not null or undefined
-            if (id === null || id === undefined) {
-                throw new RequiredError('id','Required parameter id was null or undefined when calling articlesDelete.');
-            }
-            const localVarPath = `/articles/{id}/`
-                .replace(`{${"id"}}`, encodeURIComponent(String(id)));
-            const localVarUrlObj = url.parse(localVarPath, true);
-            const localVarRequestOptions = Object.assign({ method: 'DELETE' }, options);
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-            // authentication Basic required
-            // http basic authentication required
-            if (configuration && (configuration.username || configuration.password)) {
-                localVarHeaderParameter["Authorization"] = "Basic " + btoa(configuration.username + ":" + configuration.password);
-            }
-
-            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
-            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
-            delete localVarUrlObj.search;
-            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
-
-            return {
-                url: url.format(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         * API endpoint that allows users to be viewed or edited.
-         * @param {number} [page] A page number within the paginated result set.
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        articlesList(page?: number, options: any = {}): FetchArgs {
-            const localVarPath = `/articles/`;
-            const localVarUrlObj = url.parse(localVarPath, true);
-            const localVarRequestOptions = Object.assign({ method: 'GET' }, options);
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-            // authentication Basic required
-            // http basic authentication required
-            if (configuration && (configuration.username || configuration.password)) {
-                localVarHeaderParameter["Authorization"] = "Basic " + btoa(configuration.username + ":" + configuration.password);
-            }
-
-            if (page !== undefined) {
-                localVarQueryParameter['page'] = page;
-            }
-
-            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
-            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
-            delete localVarUrlObj.search;
-            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
-
-            return {
-                url: url.format(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         * API endpoint that allows users to be viewed or edited.
-         * @param {Article} body 
-         * @param {number} id A unique integer value identifying this article.
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        articlesPartialUpdate(body: Article, id: number, options: any = {}): FetchArgs {
-            // verify required parameter 'body' is not null or undefined
-            if (body === null || body === undefined) {
-                throw new RequiredError('body','Required parameter body was null or undefined when calling articlesPartialUpdate.');
-            }
-            // verify required parameter 'id' is not null or undefined
-            if (id === null || id === undefined) {
-                throw new RequiredError('id','Required parameter id was null or undefined when calling articlesPartialUpdate.');
-            }
-            const localVarPath = `/articles/{id}/`
-                .replace(`{${"id"}}`, encodeURIComponent(String(id)));
-            const localVarUrlObj = url.parse(localVarPath, true);
-            const localVarRequestOptions = Object.assign({ method: 'PATCH' }, options);
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-            // authentication Basic required
-            // http basic authentication required
-            if (configuration && (configuration.username || configuration.password)) {
-                localVarHeaderParameter["Authorization"] = "Basic " + btoa(configuration.username + ":" + configuration.password);
-            }
-
-            localVarHeaderParameter['Content-Type'] = 'application/json';
-
-            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
-            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
-            delete localVarUrlObj.search;
-            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
-            const needsSerialization = (<any>"Article" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
-            localVarRequestOptions.body =  needsSerialization ? JSON.stringify(body || {}) : (body || "");
-
-            return {
-                url: url.format(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         * API endpoint that allows users to be viewed or edited.
-         * @param {number} id A unique integer value identifying this article.
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        articlesRead(id: number, options: any = {}): FetchArgs {
-            // verify required parameter 'id' is not null or undefined
-            if (id === null || id === undefined) {
-                throw new RequiredError('id','Required parameter id was null or undefined when calling articlesRead.');
-            }
-            const localVarPath = `/articles/{id}/`
-                .replace(`{${"id"}}`, encodeURIComponent(String(id)));
-            const localVarUrlObj = url.parse(localVarPath, true);
-            const localVarRequestOptions = Object.assign({ method: 'GET' }, options);
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-            // authentication Basic required
-            // http basic authentication required
-            if (configuration && (configuration.username || configuration.password)) {
-                localVarHeaderParameter["Authorization"] = "Basic " + btoa(configuration.username + ":" + configuration.password);
-            }
-
-            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
-            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
-            delete localVarUrlObj.search;
-            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
-
-            return {
-                url: url.format(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         * API endpoint that allows users to be viewed or edited.
-         * @param {Article} body 
-         * @param {number} id A unique integer value identifying this article.
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        articlesUpdate(body: Article, id: number, options: any = {}): FetchArgs {
-            // verify required parameter 'body' is not null or undefined
-            if (body === null || body === undefined) {
-                throw new RequiredError('body','Required parameter body was null or undefined when calling articlesUpdate.');
-            }
-            // verify required parameter 'id' is not null or undefined
-            if (id === null || id === undefined) {
-                throw new RequiredError('id','Required parameter id was null or undefined when calling articlesUpdate.');
-            }
-            const localVarPath = `/articles/{id}/`
-                .replace(`{${"id"}}`, encodeURIComponent(String(id)));
-            const localVarUrlObj = url.parse(localVarPath, true);
-            const localVarRequestOptions = Object.assign({ method: 'PUT' }, options);
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-            // authentication Basic required
-            // http basic authentication required
-            if (configuration && (configuration.username || configuration.password)) {
-                localVarHeaderParameter["Authorization"] = "Basic " + btoa(configuration.username + ":" + configuration.password);
-            }
-
-            localVarHeaderParameter['Content-Type'] = 'application/json';
-
-            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
-            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
-            delete localVarUrlObj.search;
-            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
-            const needsSerialization = (<any>"Article" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
-            localVarRequestOptions.body =  needsSerialization ? JSON.stringify(body || {}) : (body || "");
-
-            return {
-                url: url.format(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-    }
-};
-
-/**
- * ArticlesApi - functional programming interface
- * @export
- */
-export const ArticlesApiFp = function(configuration?: Configuration) {
-    return {
-        /**
-         * API endpoint that allows users to be viewed or edited.
-         * @param {Article} body 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        articlesCreate(body: Article, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<Article> {
-            const localVarFetchArgs = ArticlesApiFetchParamCreator(configuration).articlesCreate(body, options);
-            return (fetch: FetchAPI = portableFetch, basePath: string = BASE_PATH) => {
-                return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
-                    if (response.status >= 200 && response.status < 300) {
-                        return response.json();
-                    } else {
-                        throw response;
-                    }
-                });
-            };
-        },
-        /**
-         * API endpoint that allows users to be viewed or edited.
-         * @param {number} id A unique integer value identifying this article.
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        articlesDelete(id: number, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<Response> {
-            const localVarFetchArgs = ArticlesApiFetchParamCreator(configuration).articlesDelete(id, options);
-            return (fetch: FetchAPI = portableFetch, basePath: string = BASE_PATH) => {
-                return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
-                    if (response.status >= 200 && response.status < 300) {
-                        return response;
-                    } else {
-                        throw response;
-                    }
-                });
-            };
-        },
-        /**
-         * API endpoint that allows users to be viewed or edited.
-         * @param {number} [page] A page number within the paginated result set.
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        articlesList(page?: number, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<InlineResponse200> {
-            const localVarFetchArgs = ArticlesApiFetchParamCreator(configuration).articlesList(page, options);
-            return (fetch: FetchAPI = portableFetch, basePath: string = BASE_PATH) => {
-                return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
-                    if (response.status >= 200 && response.status < 300) {
-                        return response.json();
-                    } else {
-                        throw response;
-                    }
-                });
-            };
-        },
-        /**
-         * API endpoint that allows users to be viewed or edited.
-         * @param {Article} body 
-         * @param {number} id A unique integer value identifying this article.
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        articlesPartialUpdate(body: Article, id: number, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<Article> {
-            const localVarFetchArgs = ArticlesApiFetchParamCreator(configuration).articlesPartialUpdate(body, id, options);
-            return (fetch: FetchAPI = portableFetch, basePath: string = BASE_PATH) => {
-                return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
-                    if (response.status >= 200 && response.status < 300) {
-                        return response.json();
-                    } else {
-                        throw response;
-                    }
-                });
-            };
-        },
-        /**
-         * API endpoint that allows users to be viewed or edited.
-         * @param {number} id A unique integer value identifying this article.
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        articlesRead(id: number, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<Article> {
-            const localVarFetchArgs = ArticlesApiFetchParamCreator(configuration).articlesRead(id, options);
-            return (fetch: FetchAPI = portableFetch, basePath: string = BASE_PATH) => {
-                return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
-                    if (response.status >= 200 && response.status < 300) {
-                        return response.json();
-                    } else {
-                        throw response;
-                    }
-                });
-            };
-        },
-        /**
-         * API endpoint that allows users to be viewed or edited.
-         * @param {Article} body 
-         * @param {number} id A unique integer value identifying this article.
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        articlesUpdate(body: Article, id: number, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<Article> {
-            const localVarFetchArgs = ArticlesApiFetchParamCreator(configuration).articlesUpdate(body, id, options);
-            return (fetch: FetchAPI = portableFetch, basePath: string = BASE_PATH) => {
-                return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
-                    if (response.status >= 200 && response.status < 300) {
-                        return response.json();
-                    } else {
-                        throw response;
-                    }
-                });
-            };
-        },
-    }
-};
-
-/**
- * ArticlesApi - factory interface
- * @export
- */
-export const ArticlesApiFactory = function (configuration?: Configuration, fetch?: FetchAPI, basePath?: string) {
-    return {
-        /**
-         * API endpoint that allows users to be viewed or edited.
-         * @param {Article} body 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        articlesCreate(body: Article, options?: any) {
-            return ArticlesApiFp(configuration).articlesCreate(body, options)(fetch, basePath);
-        },
-        /**
-         * API endpoint that allows users to be viewed or edited.
-         * @param {number} id A unique integer value identifying this article.
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        articlesDelete(id: number, options?: any) {
-            return ArticlesApiFp(configuration).articlesDelete(id, options)(fetch, basePath);
-        },
-        /**
-         * API endpoint that allows users to be viewed or edited.
-         * @param {number} [page] A page number within the paginated result set.
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        articlesList(page?: number, options?: any) {
-            return ArticlesApiFp(configuration).articlesList(page, options)(fetch, basePath);
-        },
-        /**
-         * API endpoint that allows users to be viewed or edited.
-         * @param {Article} body 
-         * @param {number} id A unique integer value identifying this article.
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        articlesPartialUpdate(body: Article, id: number, options?: any) {
-            return ArticlesApiFp(configuration).articlesPartialUpdate(body, id, options)(fetch, basePath);
-        },
-        /**
-         * API endpoint that allows users to be viewed or edited.
-         * @param {number} id A unique integer value identifying this article.
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        articlesRead(id: number, options?: any) {
-            return ArticlesApiFp(configuration).articlesRead(id, options)(fetch, basePath);
-        },
-        /**
-         * API endpoint that allows users to be viewed or edited.
-         * @param {Article} body 
-         * @param {number} id A unique integer value identifying this article.
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        articlesUpdate(body: Article, id: number, options?: any) {
-            return ArticlesApiFp(configuration).articlesUpdate(body, id, options)(fetch, basePath);
-        },
-    };
-};
-
-/**
- * ArticlesApi - object-oriented interface
- * @export
- * @class ArticlesApi
- * @extends {BaseAPI}
- */
-export class ArticlesApi extends BaseAPI {
-    /**
-     * API endpoint that allows users to be viewed or edited.
-     * @param {Article} body 
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof ArticlesApi
-     */
-    public articlesCreate(body: Article, options?: any) {
-        return ArticlesApiFp(this.configuration).articlesCreate(body, options)(this.fetch, this.basePath);
-    }
-
-    /**
-     * API endpoint that allows users to be viewed or edited.
-     * @param {number} id A unique integer value identifying this article.
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof ArticlesApi
-     */
-    public articlesDelete(id: number, options?: any) {
-        return ArticlesApiFp(this.configuration).articlesDelete(id, options)(this.fetch, this.basePath);
-    }
-
-    /**
-     * API endpoint that allows users to be viewed or edited.
-     * @param {number} [page] A page number within the paginated result set.
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof ArticlesApi
-     */
-    public articlesList(page?: number, options?: any) {
-        return ArticlesApiFp(this.configuration).articlesList(page, options)(this.fetch, this.basePath);
-    }
-
-    /**
-     * API endpoint that allows users to be viewed or edited.
-     * @param {Article} body 
-     * @param {number} id A unique integer value identifying this article.
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof ArticlesApi
-     */
-    public articlesPartialUpdate(body: Article, id: number, options?: any) {
-        return ArticlesApiFp(this.configuration).articlesPartialUpdate(body, id, options)(this.fetch, this.basePath);
-    }
-
-    /**
-     * API endpoint that allows users to be viewed or edited.
-     * @param {number} id A unique integer value identifying this article.
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof ArticlesApi
-     */
-    public articlesRead(id: number, options?: any) {
-        return ArticlesApiFp(this.configuration).articlesRead(id, options)(this.fetch, this.basePath);
-    }
-
-    /**
-     * API endpoint that allows users to be viewed or edited.
-     * @param {Article} body 
-     * @param {number} id A unique integer value identifying this article.
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof ArticlesApi
-     */
-    public articlesUpdate(body: Article, id: number, options?: any) {
-        return ArticlesApiFp(this.configuration).articlesUpdate(body, id, options)(this.fetch, this.basePath);
-    }
-
-}
-/**
- * GroupsApi - fetch parameter creator
- * @export
- */
-export const GroupsApiFetchParamCreator = function (configuration?: Configuration) {
-    return {
-        /**
-         * API endpoint that allows groups to be viewed or edited.
-         * @param {Group} body 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        groupsCreate(body: Group, options: any = {}): FetchArgs {
-            // verify required parameter 'body' is not null or undefined
-            if (body === null || body === undefined) {
-                throw new RequiredError('body','Required parameter body was null or undefined when calling groupsCreate.');
-            }
-            const localVarPath = `/groups/`;
-            const localVarUrlObj = url.parse(localVarPath, true);
-            const localVarRequestOptions = Object.assign({ method: 'POST' }, options);
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-            // authentication Basic required
-            // http basic authentication required
-            if (configuration && (configuration.username || configuration.password)) {
-                localVarHeaderParameter["Authorization"] = "Basic " + btoa(configuration.username + ":" + configuration.password);
-            }
-
-            localVarHeaderParameter['Content-Type'] = 'application/json';
-
-            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
-            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
-            delete localVarUrlObj.search;
-            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
-            const needsSerialization = (<any>"Group" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
-            localVarRequestOptions.body =  needsSerialization ? JSON.stringify(body || {}) : (body || "");
-
-            return {
-                url: url.format(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         * API endpoint that allows groups to be viewed or edited.
-         * @param {number} id A unique integer value identifying this group.
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        groupsDelete(id: number, options: any = {}): FetchArgs {
-            // verify required parameter 'id' is not null or undefined
-            if (id === null || id === undefined) {
-                throw new RequiredError('id','Required parameter id was null or undefined when calling groupsDelete.');
-            }
-            const localVarPath = `/groups/{id}/`
-                .replace(`{${"id"}}`, encodeURIComponent(String(id)));
-            const localVarUrlObj = url.parse(localVarPath, true);
-            const localVarRequestOptions = Object.assign({ method: 'DELETE' }, options);
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-            // authentication Basic required
-            // http basic authentication required
-            if (configuration && (configuration.username || configuration.password)) {
-                localVarHeaderParameter["Authorization"] = "Basic " + btoa(configuration.username + ":" + configuration.password);
-            }
-
-            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
-            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
-            delete localVarUrlObj.search;
-            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
-
-            return {
-                url: url.format(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         * API endpoint that allows groups to be viewed or edited.
-         * @param {number} [page] A page number within the paginated result set.
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        groupsList(page?: number, options: any = {}): FetchArgs {
-            const localVarPath = `/groups/`;
-            const localVarUrlObj = url.parse(localVarPath, true);
-            const localVarRequestOptions = Object.assign({ method: 'GET' }, options);
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-            // authentication Basic required
-            // http basic authentication required
-            if (configuration && (configuration.username || configuration.password)) {
-                localVarHeaderParameter["Authorization"] = "Basic " + btoa(configuration.username + ":" + configuration.password);
-            }
-
-            if (page !== undefined) {
-                localVarQueryParameter['page'] = page;
-            }
-
-            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
-            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
-            delete localVarUrlObj.search;
-            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
-
-            return {
-                url: url.format(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         * API endpoint that allows groups to be viewed or edited.
-         * @param {Group} body 
-         * @param {number} id A unique integer value identifying this group.
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        groupsPartialUpdate(body: Group, id: number, options: any = {}): FetchArgs {
-            // verify required parameter 'body' is not null or undefined
-            if (body === null || body === undefined) {
-                throw new RequiredError('body','Required parameter body was null or undefined when calling groupsPartialUpdate.');
-            }
-            // verify required parameter 'id' is not null or undefined
-            if (id === null || id === undefined) {
-                throw new RequiredError('id','Required parameter id was null or undefined when calling groupsPartialUpdate.');
-            }
-            const localVarPath = `/groups/{id}/`
-                .replace(`{${"id"}}`, encodeURIComponent(String(id)));
-            const localVarUrlObj = url.parse(localVarPath, true);
-            const localVarRequestOptions = Object.assign({ method: 'PATCH' }, options);
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-            // authentication Basic required
-            // http basic authentication required
-            if (configuration && (configuration.username || configuration.password)) {
-                localVarHeaderParameter["Authorization"] = "Basic " + btoa(configuration.username + ":" + configuration.password);
-            }
-
-            localVarHeaderParameter['Content-Type'] = 'application/json';
-
-            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
-            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
-            delete localVarUrlObj.search;
-            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
-            const needsSerialization = (<any>"Group" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
-            localVarRequestOptions.body =  needsSerialization ? JSON.stringify(body || {}) : (body || "");
-
-            return {
-                url: url.format(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         * API endpoint that allows groups to be viewed or edited.
-         * @param {number} id A unique integer value identifying this group.
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        groupsRead(id: number, options: any = {}): FetchArgs {
-            // verify required parameter 'id' is not null or undefined
-            if (id === null || id === undefined) {
-                throw new RequiredError('id','Required parameter id was null or undefined when calling groupsRead.');
-            }
-            const localVarPath = `/groups/{id}/`
-                .replace(`{${"id"}}`, encodeURIComponent(String(id)));
-            const localVarUrlObj = url.parse(localVarPath, true);
-            const localVarRequestOptions = Object.assign({ method: 'GET' }, options);
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-            // authentication Basic required
-            // http basic authentication required
-            if (configuration && (configuration.username || configuration.password)) {
-                localVarHeaderParameter["Authorization"] = "Basic " + btoa(configuration.username + ":" + configuration.password);
-            }
-
-            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
-            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
-            delete localVarUrlObj.search;
-            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
-
-            return {
-                url: url.format(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         * API endpoint that allows groups to be viewed or edited.
-         * @param {Group} body 
-         * @param {number} id A unique integer value identifying this group.
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        groupsUpdate(body: Group, id: number, options: any = {}): FetchArgs {
-            // verify required parameter 'body' is not null or undefined
-            if (body === null || body === undefined) {
-                throw new RequiredError('body','Required parameter body was null or undefined when calling groupsUpdate.');
-            }
-            // verify required parameter 'id' is not null or undefined
-            if (id === null || id === undefined) {
-                throw new RequiredError('id','Required parameter id was null or undefined when calling groupsUpdate.');
-            }
-            const localVarPath = `/groups/{id}/`
-                .replace(`{${"id"}}`, encodeURIComponent(String(id)));
-            const localVarUrlObj = url.parse(localVarPath, true);
-            const localVarRequestOptions = Object.assign({ method: 'PUT' }, options);
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-            // authentication Basic required
-            // http basic authentication required
-            if (configuration && (configuration.username || configuration.password)) {
-                localVarHeaderParameter["Authorization"] = "Basic " + btoa(configuration.username + ":" + configuration.password);
-            }
-
-            localVarHeaderParameter['Content-Type'] = 'application/json';
-
-            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
-            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
-            delete localVarUrlObj.search;
-            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
-            const needsSerialization = (<any>"Group" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
-            localVarRequestOptions.body =  needsSerialization ? JSON.stringify(body || {}) : (body || "");
-
-            return {
-                url: url.format(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-    }
-};
-
-/**
- * GroupsApi - functional programming interface
- * @export
- */
-export const GroupsApiFp = function(configuration?: Configuration) {
-    return {
-        /**
-         * API endpoint that allows groups to be viewed or edited.
-         * @param {Group} body 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        groupsCreate(body: Group, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<Group> {
-            const localVarFetchArgs = GroupsApiFetchParamCreator(configuration).groupsCreate(body, options);
-            return (fetch: FetchAPI = portableFetch, basePath: string = BASE_PATH) => {
-                return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
-                    if (response.status >= 200 && response.status < 300) {
-                        return response.json();
-                    } else {
-                        throw response;
-                    }
-                });
-            };
-        },
-        /**
-         * API endpoint that allows groups to be viewed or edited.
-         * @param {number} id A unique integer value identifying this group.
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        groupsDelete(id: number, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<Response> {
-            const localVarFetchArgs = GroupsApiFetchParamCreator(configuration).groupsDelete(id, options);
-            return (fetch: FetchAPI = portableFetch, basePath: string = BASE_PATH) => {
-                return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
-                    if (response.status >= 200 && response.status < 300) {
-                        return response;
-                    } else {
-                        throw response;
-                    }
-                });
-            };
-        },
-        /**
-         * API endpoint that allows groups to be viewed or edited.
-         * @param {number} [page] A page number within the paginated result set.
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        groupsList(page?: number, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<InlineResponse2001> {
-            const localVarFetchArgs = GroupsApiFetchParamCreator(configuration).groupsList(page, options);
-            return (fetch: FetchAPI = portableFetch, basePath: string = BASE_PATH) => {
-                return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
-                    if (response.status >= 200 && response.status < 300) {
-                        return response.json();
-                    } else {
-                        throw response;
-                    }
-                });
-            };
-        },
-        /**
-         * API endpoint that allows groups to be viewed or edited.
-         * @param {Group} body 
-         * @param {number} id A unique integer value identifying this group.
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        groupsPartialUpdate(body: Group, id: number, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<Group> {
-            const localVarFetchArgs = GroupsApiFetchParamCreator(configuration).groupsPartialUpdate(body, id, options);
-            return (fetch: FetchAPI = portableFetch, basePath: string = BASE_PATH) => {
-                return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
-                    if (response.status >= 200 && response.status < 300) {
-                        return response.json();
-                    } else {
-                        throw response;
-                    }
-                });
-            };
-        },
-        /**
-         * API endpoint that allows groups to be viewed or edited.
-         * @param {number} id A unique integer value identifying this group.
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        groupsRead(id: number, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<Group> {
-            const localVarFetchArgs = GroupsApiFetchParamCreator(configuration).groupsRead(id, options);
-            return (fetch: FetchAPI = portableFetch, basePath: string = BASE_PATH) => {
-                return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
-                    if (response.status >= 200 && response.status < 300) {
-                        return response.json();
-                    } else {
-                        throw response;
-                    }
-                });
-            };
-        },
-        /**
-         * API endpoint that allows groups to be viewed or edited.
-         * @param {Group} body 
-         * @param {number} id A unique integer value identifying this group.
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        groupsUpdate(body: Group, id: number, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<Group> {
-            const localVarFetchArgs = GroupsApiFetchParamCreator(configuration).groupsUpdate(body, id, options);
-            return (fetch: FetchAPI = portableFetch, basePath: string = BASE_PATH) => {
-                return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
-                    if (response.status >= 200 && response.status < 300) {
-                        return response.json();
-                    } else {
-                        throw response;
-                    }
-                });
-            };
-        },
-    }
-};
-
-/**
- * GroupsApi - factory interface
- * @export
- */
-export const GroupsApiFactory = function (configuration?: Configuration, fetch?: FetchAPI, basePath?: string) {
-    return {
-        /**
-         * API endpoint that allows groups to be viewed or edited.
-         * @param {Group} body 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        groupsCreate(body: Group, options?: any) {
-            return GroupsApiFp(configuration).groupsCreate(body, options)(fetch, basePath);
-        },
-        /**
-         * API endpoint that allows groups to be viewed or edited.
-         * @param {number} id A unique integer value identifying this group.
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        groupsDelete(id: number, options?: any) {
-            return GroupsApiFp(configuration).groupsDelete(id, options)(fetch, basePath);
-        },
-        /**
-         * API endpoint that allows groups to be viewed or edited.
-         * @param {number} [page] A page number within the paginated result set.
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        groupsList(page?: number, options?: any) {
-            return GroupsApiFp(configuration).groupsList(page, options)(fetch, basePath);
-        },
-        /**
-         * API endpoint that allows groups to be viewed or edited.
-         * @param {Group} body 
-         * @param {number} id A unique integer value identifying this group.
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        groupsPartialUpdate(body: Group, id: number, options?: any) {
-            return GroupsApiFp(configuration).groupsPartialUpdate(body, id, options)(fetch, basePath);
-        },
-        /**
-         * API endpoint that allows groups to be viewed or edited.
-         * @param {number} id A unique integer value identifying this group.
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        groupsRead(id: number, options?: any) {
-            return GroupsApiFp(configuration).groupsRead(id, options)(fetch, basePath);
-        },
-        /**
-         * API endpoint that allows groups to be viewed or edited.
-         * @param {Group} body 
-         * @param {number} id A unique integer value identifying this group.
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        groupsUpdate(body: Group, id: number, options?: any) {
-            return GroupsApiFp(configuration).groupsUpdate(body, id, options)(fetch, basePath);
-        },
-    };
-};
-
-/**
- * GroupsApi - object-oriented interface
- * @export
- * @class GroupsApi
- * @extends {BaseAPI}
- */
-export class GroupsApi extends BaseAPI {
-    /**
-     * API endpoint that allows groups to be viewed or edited.
-     * @param {Group} body 
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof GroupsApi
-     */
-    public groupsCreate(body: Group, options?: any) {
-        return GroupsApiFp(this.configuration).groupsCreate(body, options)(this.fetch, this.basePath);
-    }
-
-    /**
-     * API endpoint that allows groups to be viewed or edited.
-     * @param {number} id A unique integer value identifying this group.
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof GroupsApi
-     */
-    public groupsDelete(id: number, options?: any) {
-        return GroupsApiFp(this.configuration).groupsDelete(id, options)(this.fetch, this.basePath);
-    }
-
-    /**
-     * API endpoint that allows groups to be viewed or edited.
-     * @param {number} [page] A page number within the paginated result set.
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof GroupsApi
-     */
-    public groupsList(page?: number, options?: any) {
-        return GroupsApiFp(this.configuration).groupsList(page, options)(this.fetch, this.basePath);
-    }
-
-    /**
-     * API endpoint that allows groups to be viewed or edited.
-     * @param {Group} body 
-     * @param {number} id A unique integer value identifying this group.
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof GroupsApi
-     */
-    public groupsPartialUpdate(body: Group, id: number, options?: any) {
-        return GroupsApiFp(this.configuration).groupsPartialUpdate(body, id, options)(this.fetch, this.basePath);
-    }
-
-    /**
-     * API endpoint that allows groups to be viewed or edited.
-     * @param {number} id A unique integer value identifying this group.
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof GroupsApi
-     */
-    public groupsRead(id: number, options?: any) {
-        return GroupsApiFp(this.configuration).groupsRead(id, options)(this.fetch, this.basePath);
-    }
-
-    /**
-     * API endpoint that allows groups to be viewed or edited.
-     * @param {Group} body 
-     * @param {number} id A unique integer value identifying this group.
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof GroupsApi
-     */
-    public groupsUpdate(body: Group, id: number, options?: any) {
-        return GroupsApiFp(this.configuration).groupsUpdate(body, id, options)(this.fetch, this.basePath);
-    }
-
-}
-/**
- * UsersApi - fetch parameter creator
- * @export
- */
-export const UsersApiFetchParamCreator = function (configuration?: Configuration) {
-    return {
-        /**
-         * API endpoint that allows users to be viewed or edited.
-         * @param {User} body 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        usersCreate(body: User, options: any = {}): FetchArgs {
-            // verify required parameter 'body' is not null or undefined
-            if (body === null || body === undefined) {
-                throw new RequiredError('body','Required parameter body was null or undefined when calling usersCreate.');
-            }
-            const localVarPath = `/users/`;
-            const localVarUrlObj = url.parse(localVarPath, true);
-            const localVarRequestOptions = Object.assign({ method: 'POST' }, options);
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-            // authentication Basic required
-            // http basic authentication required
-            if (configuration && (configuration.username || configuration.password)) {
-                localVarHeaderParameter["Authorization"] = "Basic " + btoa(configuration.username + ":" + configuration.password);
-            }
-
-            localVarHeaderParameter['Content-Type'] = 'application/json';
-
-            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
-            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
-            delete localVarUrlObj.search;
-            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
-            const needsSerialization = (<any>"User" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
-            localVarRequestOptions.body =  needsSerialization ? JSON.stringify(body || {}) : (body || "");
-
-            return {
-                url: url.format(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         * API endpoint that allows users to be viewed or edited.
-         * @param {number} id A unique integer value identifying this user.
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        usersDelete(id: number, options: any = {}): FetchArgs {
-            // verify required parameter 'id' is not null or undefined
-            if (id === null || id === undefined) {
-                throw new RequiredError('id','Required parameter id was null or undefined when calling usersDelete.');
-            }
-            const localVarPath = `/users/{id}/`
-                .replace(`{${"id"}}`, encodeURIComponent(String(id)));
-            const localVarUrlObj = url.parse(localVarPath, true);
-            const localVarRequestOptions = Object.assign({ method: 'DELETE' }, options);
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-            // authentication Basic required
-            // http basic authentication required
-            if (configuration && (configuration.username || configuration.password)) {
-                localVarHeaderParameter["Authorization"] = "Basic " + btoa(configuration.username + ":" + configuration.password);
-            }
-
-            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
-            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
-            delete localVarUrlObj.search;
-            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
-
-            return {
-                url: url.format(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         * API endpoint that allows users to be viewed or edited.
-         * @param {number} [page] A page number within the paginated result set.
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        usersList(page?: number, options: any = {}): FetchArgs {
-            const localVarPath = `/users/`;
-            const localVarUrlObj = url.parse(localVarPath, true);
-            const localVarRequestOptions = Object.assign({ method: 'GET' }, options);
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-            // authentication Basic required
-            // http basic authentication required
-            if (configuration && (configuration.username || configuration.password)) {
-                localVarHeaderParameter["Authorization"] = "Basic " + btoa(configuration.username + ":" + configuration.password);
-            }
-
-            if (page !== undefined) {
-                localVarQueryParameter['page'] = page;
-            }
-
-            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
-            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
-            delete localVarUrlObj.search;
-            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
-
-            return {
-                url: url.format(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         * API endpoint that allows users to be viewed or edited.
-         * @param {User} body 
-         * @param {number} id A unique integer value identifying this user.
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        usersPartialUpdate(body: User, id: number, options: any = {}): FetchArgs {
-            // verify required parameter 'body' is not null or undefined
-            if (body === null || body === undefined) {
-                throw new RequiredError('body','Required parameter body was null or undefined when calling usersPartialUpdate.');
-            }
-            // verify required parameter 'id' is not null or undefined
-            if (id === null || id === undefined) {
-                throw new RequiredError('id','Required parameter id was null or undefined when calling usersPartialUpdate.');
-            }
-            const localVarPath = `/users/{id}/`
-                .replace(`{${"id"}}`, encodeURIComponent(String(id)));
-            const localVarUrlObj = url.parse(localVarPath, true);
-            const localVarRequestOptions = Object.assign({ method: 'PATCH' }, options);
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-            // authentication Basic required
-            // http basic authentication required
-            if (configuration && (configuration.username || configuration.password)) {
-                localVarHeaderParameter["Authorization"] = "Basic " + btoa(configuration.username + ":" + configuration.password);
-            }
-
-            localVarHeaderParameter['Content-Type'] = 'application/json';
-
-            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
-            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
-            delete localVarUrlObj.search;
-            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
-            const needsSerialization = (<any>"User" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
-            localVarRequestOptions.body =  needsSerialization ? JSON.stringify(body || {}) : (body || "");
-
-            return {
-                url: url.format(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         * API endpoint that allows users to be viewed or edited.
-         * @param {number} id A unique integer value identifying this user.
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        usersRead(id: number, options: any = {}): FetchArgs {
-            // verify required parameter 'id' is not null or undefined
-            if (id === null || id === undefined) {
-                throw new RequiredError('id','Required parameter id was null or undefined when calling usersRead.');
-            }
-            const localVarPath = `/users/{id}/`
-                .replace(`{${"id"}}`, encodeURIComponent(String(id)));
-            const localVarUrlObj = url.parse(localVarPath, true);
-            const localVarRequestOptions = Object.assign({ method: 'GET' }, options);
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-            // authentication Basic required
-            // http basic authentication required
-            if (configuration && (configuration.username || configuration.password)) {
-                localVarHeaderParameter["Authorization"] = "Basic " + btoa(configuration.username + ":" + configuration.password);
-            }
-
-            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
-            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
-            delete localVarUrlObj.search;
-            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
-
-            return {
-                url: url.format(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         * API endpoint that allows users to be viewed or edited.
-         * @param {User} body 
-         * @param {number} id A unique integer value identifying this user.
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        usersUpdate(body: User, id: number, options: any = {}): FetchArgs {
-            // verify required parameter 'body' is not null or undefined
-            if (body === null || body === undefined) {
-                throw new RequiredError('body','Required parameter body was null or undefined when calling usersUpdate.');
-            }
-            // verify required parameter 'id' is not null or undefined
-            if (id === null || id === undefined) {
-                throw new RequiredError('id','Required parameter id was null or undefined when calling usersUpdate.');
-            }
-            const localVarPath = `/users/{id}/`
-                .replace(`{${"id"}}`, encodeURIComponent(String(id)));
-            const localVarUrlObj = url.parse(localVarPath, true);
-            const localVarRequestOptions = Object.assign({ method: 'PUT' }, options);
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-            // authentication Basic required
-            // http basic authentication required
-            if (configuration && (configuration.username || configuration.password)) {
-                localVarHeaderParameter["Authorization"] = "Basic " + btoa(configuration.username + ":" + configuration.password);
-            }
-
-            localVarHeaderParameter['Content-Type'] = 'application/json';
-
-            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
-            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
-            delete localVarUrlObj.search;
-            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
-            const needsSerialization = (<any>"User" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
-            localVarRequestOptions.body =  needsSerialization ? JSON.stringify(body || {}) : (body || "");
-
-            return {
-                url: url.format(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-    }
-};
-
-/**
- * UsersApi - functional programming interface
- * @export
- */
-export const UsersApiFp = function(configuration?: Configuration) {
-    return {
-        /**
-         * API endpoint that allows users to be viewed or edited.
-         * @param {User} body 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        usersCreate(body: User, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<User> {
-            const localVarFetchArgs = UsersApiFetchParamCreator(configuration).usersCreate(body, options);
-            return (fetch: FetchAPI = portableFetch, basePath: string = BASE_PATH) => {
-                return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
-                    if (response.status >= 200 && response.status < 300) {
-                        return response.json();
-                    } else {
-                        throw response;
-                    }
-                });
-            };
-        },
-        /**
-         * API endpoint that allows users to be viewed or edited.
-         * @param {number} id A unique integer value identifying this user.
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        usersDelete(id: number, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<Response> {
-            const localVarFetchArgs = UsersApiFetchParamCreator(configuration).usersDelete(id, options);
-            return (fetch: FetchAPI = portableFetch, basePath: string = BASE_PATH) => {
-                return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
-                    if (response.status >= 200 && response.status < 300) {
-                        return response;
-                    } else {
-                        throw response;
-                    }
-                });
-            };
-        },
-        /**
-         * API endpoint that allows users to be viewed or edited.
-         * @param {number} [page] A page number within the paginated result set.
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        usersList(page?: number, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<InlineResponse2002> {
-            const localVarFetchArgs = UsersApiFetchParamCreator(configuration).usersList(page, options);
-            return (fetch: FetchAPI = portableFetch, basePath: string = BASE_PATH) => {
-                return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
-                    if (response.status >= 200 && response.status < 300) {
-                        return response.json();
-                    } else {
-                        throw response;
-                    }
-                });
-            };
-        },
-        /**
-         * API endpoint that allows users to be viewed or edited.
-         * @param {User} body 
-         * @param {number} id A unique integer value identifying this user.
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        usersPartialUpdate(body: User, id: number, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<User> {
-            const localVarFetchArgs = UsersApiFetchParamCreator(configuration).usersPartialUpdate(body, id, options);
-            return (fetch: FetchAPI = portableFetch, basePath: string = BASE_PATH) => {
-                return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
-                    if (response.status >= 200 && response.status < 300) {
-                        return response.json();
-                    } else {
-                        throw response;
-                    }
-                });
-            };
-        },
-        /**
-         * API endpoint that allows users to be viewed or edited.
-         * @param {number} id A unique integer value identifying this user.
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        usersRead(id: number, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<User> {
-            const localVarFetchArgs = UsersApiFetchParamCreator(configuration).usersRead(id, options);
-            return (fetch: FetchAPI = portableFetch, basePath: string = BASE_PATH) => {
-                return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
-                    if (response.status >= 200 && response.status < 300) {
-                        return response.json();
-                    } else {
-                        throw response;
-                    }
-                });
-            };
-        },
-        /**
-         * API endpoint that allows users to be viewed or edited.
-         * @param {User} body 
-         * @param {number} id A unique integer value identifying this user.
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        usersUpdate(body: User, id: number, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<User> {
-            const localVarFetchArgs = UsersApiFetchParamCreator(configuration).usersUpdate(body, id, options);
-            return (fetch: FetchAPI = portableFetch, basePath: string = BASE_PATH) => {
-                return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
-                    if (response.status >= 200 && response.status < 300) {
-                        return response.json();
-                    } else {
-                        throw response;
-                    }
-                });
-            };
-        },
-    }
-};
-
-/**
- * UsersApi - factory interface
- * @export
- */
-export const UsersApiFactory = function (configuration?: Configuration, fetch?: FetchAPI, basePath?: string) {
-    return {
-        /**
-         * API endpoint that allows users to be viewed or edited.
-         * @param {User} body 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        usersCreate(body: User, options?: any) {
-            return UsersApiFp(configuration).usersCreate(body, options)(fetch, basePath);
-        },
-        /**
-         * API endpoint that allows users to be viewed or edited.
-         * @param {number} id A unique integer value identifying this user.
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        usersDelete(id: number, options?: any) {
-            return UsersApiFp(configuration).usersDelete(id, options)(fetch, basePath);
-        },
-        /**
-         * API endpoint that allows users to be viewed or edited.
-         * @param {number} [page] A page number within the paginated result set.
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        usersList(page?: number, options?: any) {
-            return UsersApiFp(configuration).usersList(page, options)(fetch, basePath);
-        },
-        /**
-         * API endpoint that allows users to be viewed or edited.
-         * @param {User} body 
-         * @param {number} id A unique integer value identifying this user.
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        usersPartialUpdate(body: User, id: number, options?: any) {
-            return UsersApiFp(configuration).usersPartialUpdate(body, id, options)(fetch, basePath);
-        },
-        /**
-         * API endpoint that allows users to be viewed or edited.
-         * @param {number} id A unique integer value identifying this user.
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        usersRead(id: number, options?: any) {
-            return UsersApiFp(configuration).usersRead(id, options)(fetch, basePath);
-        },
-        /**
-         * API endpoint that allows users to be viewed or edited.
-         * @param {User} body 
-         * @param {number} id A unique integer value identifying this user.
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        usersUpdate(body: User, id: number, options?: any) {
-            return UsersApiFp(configuration).usersUpdate(body, id, options)(fetch, basePath);
-        },
-    };
-};
-
-/**
- * UsersApi - object-oriented interface
- * @export
- * @class UsersApi
- * @extends {BaseAPI}
- */
-export class UsersApi extends BaseAPI {
-    /**
-     * API endpoint that allows users to be viewed or edited.
-     * @param {User} body 
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof UsersApi
-     */
-    public usersCreate(body: User, options?: any) {
-        return UsersApiFp(this.configuration).usersCreate(body, options)(this.fetch, this.basePath);
-    }
-
-    /**
-     * API endpoint that allows users to be viewed or edited.
-     * @param {number} id A unique integer value identifying this user.
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof UsersApi
-     */
-    public usersDelete(id: number, options?: any) {
-        return UsersApiFp(this.configuration).usersDelete(id, options)(this.fetch, this.basePath);
-    }
-
-    /**
-     * API endpoint that allows users to be viewed or edited.
-     * @param {number} [page] A page number within the paginated result set.
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof UsersApi
-     */
-    public usersList(page?: number, options?: any) {
-        return UsersApiFp(this.configuration).usersList(page, options)(this.fetch, this.basePath);
-    }
-
-    /**
-     * API endpoint that allows users to be viewed or edited.
-     * @param {User} body 
-     * @param {number} id A unique integer value identifying this user.
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof UsersApi
-     */
-    public usersPartialUpdate(body: User, id: number, options?: any) {
-        return UsersApiFp(this.configuration).usersPartialUpdate(body, id, options)(this.fetch, this.basePath);
-    }
-
-    /**
-     * API endpoint that allows users to be viewed or edited.
-     * @param {number} id A unique integer value identifying this user.
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof UsersApi
-     */
-    public usersRead(id: number, options?: any) {
-        return UsersApiFp(this.configuration).usersRead(id, options)(this.fetch, this.basePath);
-    }
-
-    /**
-     * API endpoint that allows users to be viewed or edited.
-     * @param {User} body 
-     * @param {number} id A unique integer value identifying this user.
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof UsersApi
-     */
-    public usersUpdate(body: User, id: number, options?: any) {
-        return UsersApiFp(this.configuration).usersUpdate(body, id, options)(this.fetch, this.basePath);
     }
 
 }

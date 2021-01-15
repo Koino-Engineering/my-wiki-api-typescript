@@ -15,6 +15,92 @@ import { Configuration } from "./configuration"
 
 const config: Configuration = {}
 
+describe("ApiApi", () => {
+  let instance: api.ApiApi
+  beforeEach(function() {
+    instance = new api.ApiApi(config)
+  });
+
+  test("apiArticlesCreate", () => {
+    const body: api.Article = undefined
+    return expect(instance.apiArticlesCreate(body, {})).resolves.toBe(null)
+  })
+  test("apiArticlesDelete", () => {
+    const id: number = 56
+    return expect(instance.apiArticlesDelete(id, {})).resolves.toBe(null)
+  })
+  test("apiArticlesList", () => {
+    const page: number = 56
+    return expect(instance.apiArticlesList(page, {})).resolves.toBe(null)
+  })
+  test("apiArticlesPartialUpdate", () => {
+    const body: api.Article = undefined
+    const id: number = 56
+    return expect(instance.apiArticlesPartialUpdate(body, id, {})).resolves.toBe(null)
+  })
+  test("apiArticlesRead", () => {
+    const id: number = 56
+    return expect(instance.apiArticlesRead(id, {})).resolves.toBe(null)
+  })
+  test("apiArticlesUpdate", () => {
+    const body: api.Article = undefined
+    const id: number = 56
+    return expect(instance.apiArticlesUpdate(body, id, {})).resolves.toBe(null)
+  })
+  test("apiGroupsCreate", () => {
+    const body: api.Group = undefined
+    return expect(instance.apiGroupsCreate(body, {})).resolves.toBe(null)
+  })
+  test("apiGroupsDelete", () => {
+    const id: number = 56
+    return expect(instance.apiGroupsDelete(id, {})).resolves.toBe(null)
+  })
+  test("apiGroupsList", () => {
+    const page: number = 56
+    return expect(instance.apiGroupsList(page, {})).resolves.toBe(null)
+  })
+  test("apiGroupsPartialUpdate", () => {
+    const body: api.Group = undefined
+    const id: number = 56
+    return expect(instance.apiGroupsPartialUpdate(body, id, {})).resolves.toBe(null)
+  })
+  test("apiGroupsRead", () => {
+    const id: number = 56
+    return expect(instance.apiGroupsRead(id, {})).resolves.toBe(null)
+  })
+  test("apiGroupsUpdate", () => {
+    const body: api.Group = undefined
+    const id: number = 56
+    return expect(instance.apiGroupsUpdate(body, id, {})).resolves.toBe(null)
+  })
+  test("apiUsersCreate", () => {
+    const body: api.User = undefined
+    return expect(instance.apiUsersCreate(body, {})).resolves.toBe(null)
+  })
+  test("apiUsersDelete", () => {
+    const id: number = 56
+    return expect(instance.apiUsersDelete(id, {})).resolves.toBe(null)
+  })
+  test("apiUsersList", () => {
+    const page: number = 56
+    return expect(instance.apiUsersList(page, {})).resolves.toBe(null)
+  })
+  test("apiUsersPartialUpdate", () => {
+    const body: api.User = undefined
+    const id: number = 56
+    return expect(instance.apiUsersPartialUpdate(body, id, {})).resolves.toBe(null)
+  })
+  test("apiUsersRead", () => {
+    const id: number = 56
+    return expect(instance.apiUsersRead(id, {})).resolves.toBe(null)
+  })
+  test("apiUsersUpdate", () => {
+    const body: api.User = undefined
+    const id: number = 56
+    return expect(instance.apiUsersUpdate(body, id, {})).resolves.toBe(null)
+  })
+})
+
 describe("ApiTokenAuthApi", () => {
   let instance: api.ApiTokenAuthApi
   beforeEach(function() {
@@ -24,108 +110,6 @@ describe("ApiTokenAuthApi", () => {
   test("apiTokenAuthCreate", () => {
     const body: api.AuthToken = undefined
     return expect(instance.apiTokenAuthCreate(body, {})).resolves.toBe(null)
-  })
-})
-
-describe("ArticlesApi", () => {
-  let instance: api.ArticlesApi
-  beforeEach(function() {
-    instance = new api.ArticlesApi(config)
-  });
-
-  test("articlesCreate", () => {
-    const body: api.Article = undefined
-    return expect(instance.articlesCreate(body, {})).resolves.toBe(null)
-  })
-  test("articlesDelete", () => {
-    const id: number = 56
-    return expect(instance.articlesDelete(id, {})).resolves.toBe(null)
-  })
-  test("articlesList", () => {
-    const page: number = 56
-    return expect(instance.articlesList(page, {})).resolves.toBe(null)
-  })
-  test("articlesPartialUpdate", () => {
-    const body: api.Article = undefined
-    const id: number = 56
-    return expect(instance.articlesPartialUpdate(body, id, {})).resolves.toBe(null)
-  })
-  test("articlesRead", () => {
-    const id: number = 56
-    return expect(instance.articlesRead(id, {})).resolves.toBe(null)
-  })
-  test("articlesUpdate", () => {
-    const body: api.Article = undefined
-    const id: number = 56
-    return expect(instance.articlesUpdate(body, id, {})).resolves.toBe(null)
-  })
-})
-
-describe("GroupsApi", () => {
-  let instance: api.GroupsApi
-  beforeEach(function() {
-    instance = new api.GroupsApi(config)
-  });
-
-  test("groupsCreate", () => {
-    const body: api.Group = undefined
-    return expect(instance.groupsCreate(body, {})).resolves.toBe(null)
-  })
-  test("groupsDelete", () => {
-    const id: number = 56
-    return expect(instance.groupsDelete(id, {})).resolves.toBe(null)
-  })
-  test("groupsList", () => {
-    const page: number = 56
-    return expect(instance.groupsList(page, {})).resolves.toBe(null)
-  })
-  test("groupsPartialUpdate", () => {
-    const body: api.Group = undefined
-    const id: number = 56
-    return expect(instance.groupsPartialUpdate(body, id, {})).resolves.toBe(null)
-  })
-  test("groupsRead", () => {
-    const id: number = 56
-    return expect(instance.groupsRead(id, {})).resolves.toBe(null)
-  })
-  test("groupsUpdate", () => {
-    const body: api.Group = undefined
-    const id: number = 56
-    return expect(instance.groupsUpdate(body, id, {})).resolves.toBe(null)
-  })
-})
-
-describe("UsersApi", () => {
-  let instance: api.UsersApi
-  beforeEach(function() {
-    instance = new api.UsersApi(config)
-  });
-
-  test("usersCreate", () => {
-    const body: api.User = undefined
-    return expect(instance.usersCreate(body, {})).resolves.toBe(null)
-  })
-  test("usersDelete", () => {
-    const id: number = 56
-    return expect(instance.usersDelete(id, {})).resolves.toBe(null)
-  })
-  test("usersList", () => {
-    const page: number = 56
-    return expect(instance.usersList(page, {})).resolves.toBe(null)
-  })
-  test("usersPartialUpdate", () => {
-    const body: api.User = undefined
-    const id: number = 56
-    return expect(instance.usersPartialUpdate(body, id, {})).resolves.toBe(null)
-  })
-  test("usersRead", () => {
-    const id: number = 56
-    return expect(instance.usersRead(id, {})).resolves.toBe(null)
-  })
-  test("usersUpdate", () => {
-    const body: api.User = undefined
-    const id: number = 56
-    return expect(instance.usersUpdate(body, id, {})).resolves.toBe(null)
   })
 })
 
