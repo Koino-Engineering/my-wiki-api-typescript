@@ -1,0 +1,32 @@
+{
+  "name": "my-wiki-api-typescript",
+  "version": "1.0.0",
+  "description": "",
+  "main": "./dist/index.js",
+  "typings": "./dist/index.d.ts",
+  "scripts": {
+    "build": "tsc",
+    "prepublishOnly": "npm run build",
+    "tsc": "tsc"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/Koino-Engineering/my-wiki-api-typescript.git"
+  },
+  "author": "Koino-Engineering",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Koino-Engineering/my-wiki-api-typescript/issues"
+  },
+  "homepage": "https://github.com/Koino-Engineering/my-wiki-api-typescript#readme",
+  "dependencies": {
+    "portable-fetch": "^3.0.0",
+    "url": "^0.11.0"
+  },
+  "devDependencies": {
+    "@types/jest": "^26.0.20",
+    "@types/node": "^14.14.20",
+    "jest": "^26.6.3",
+    "typescript": "^4.1.3"
+  }
+}

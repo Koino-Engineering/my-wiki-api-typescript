@@ -1,0 +1,11 @@
+version: "3"
+volumes:
+  node_modules_dummy:
+services:
+  api:
+    build: ./
+    volumes:
+      - ./:/src
+      - node_modules_dummy:/src/src/node_modules
+    working_dir: /src/src
+    entrypoint: tail -f /dev/null
